@@ -31,26 +31,25 @@
   onScroll();
 })();
 
-// Lightbox
+// Lightbox (event delegation — works with dynamically added photos)
 (function() {
-  const items = document.querySelectorAll('.photo-item');
-  if (!items.length) return;
-
   const lb = document.getElementById('lightbox');
   if (!lb) return;
 
   const lbImg = lb.querySelector('.lightbox-img');
   const lbCap = lb.querySelector('.lightbox-caption');
   let current = 0;
-  const photos = Array.from(items).map(el => ({
-    src: el.dataset.src,
-    caption: el.dataset.caption || ''
-  }));
+
+  function getItems() {
+    return Array.from(document.querySelectorAll('.photo-item'));
+  }
 
   function open(i) {
+    const items = getItems();
+    if (!items.length) return;
     current = i;
-    lbImg.src = photos[i].src;
-    lbCap.textContent = photos[i].caption;
+    lbImg.src = items[i].dataset.src;
+    lbCap.textContent = items[i].dataset.caption || '';
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -60,10 +59,17 @@
     document.body.style.overflow = '';
   }
 
-  function prev() { open((current - 1 + photos.length) % photos.length); }
-  function next() { open((current + 1) % photos.length); }
+  function prev() { const n = getItems().length; if (n) open((current - 1 + n) % n); }
+  function next() { const n = getItems().length; if (n) open((current + 1) % n); }
 
-  items.forEach((el, i) => el.addEventListener('click', () => open(i)));
+  document.addEventListener('click', e => {
+    const item = e.target.closest('.photo-item');
+    if (!item) return;
+    const items = getItems();
+    const idx = items.indexOf(item);
+    if (idx >= 0) open(idx);
+  });
+
   lb.querySelector('.lightbox-close').addEventListener('click', close);
   lb.querySelector('.lightbox-nav.prev').addEventListener('click', prev);
   lb.querySelector('.lightbox-nav.next').addEventListener('click', next);

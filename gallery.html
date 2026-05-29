@@ -79,7 +79,7 @@
           div.dataset.src = photo.file;
           div.dataset.caption = photo.caption || '';
           const mediumTag = photo.medium
-            ? `<span class="photo-medium photo-medium--${photo.medium}">${photo.medium}</span>`
+            ? `<span class="photo-ribbon photo-ribbon--${photo.medium}">${photo.medium}</span>`
             : '';
           div.innerHTML = `
             ${mediumTag}

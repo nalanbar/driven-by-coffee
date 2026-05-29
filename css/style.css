@@ -321,36 +321,39 @@ nav.scrolled {
 
 .photo-item:hover .photo-caption { opacity: 1; }
 
-/* MEDIUM TAG */
-.photo-medium {
+/* MEDIUM RIBBON */
+.photo-ribbon {
   position: absolute;
-  top: 0.6rem;
-  left: 0.6rem;
-  font-size: 0.6rem;
+  bottom: 2rem;
+  left: -3.2rem;
+  width: 10rem;
+  text-align: center;
+  font-size: 0.55rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 0.2rem 0.5rem;
-  border-radius: 2px;
+  padding: 0.25rem 0;
+  transform: rotate(45deg);
+  transform-origin: center;
   z-index: 1;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.photo-item:hover .photo-medium { opacity: 1; }
+.photo-item:hover .photo-ribbon { opacity: 1; }
 
-.photo-medium--film {
-  background: rgba(200,169,110,0.85);
+.photo-ribbon--film {
+  background: rgba(200,169,110,0.9);
   color: #0e0e0e;
 }
 
-.photo-medium--digital {
-  background: rgba(240,236,228,0.85);
+.photo-ribbon--digital {
+  background: rgba(240,236,228,0.9);
   color: #0e0e0e;
 }
 
-.photo-medium--mobile {
-  background: rgba(138,134,128,0.85);
+.photo-ribbon--mobile {
+  background: rgba(138,134,128,0.9);
   color: #f0ece4;
 }
 
