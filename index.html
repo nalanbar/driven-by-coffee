@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nabil Alanbar — Driven by Coffee</title>
+  <meta name="description" content="Photography by Nabil Alanbar">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Driven by Coffee</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Hi, I'm <em>Nabil Alanbar.</em></h1>
+    <p>Film &amp; digital photography — Burlington, VT</p>
+    <div class="scroll-hint">
+      <span class="scroll-hint-line"></span>
+      <span>Scroll to see the work</span>
+    </div>
+  </div>
+</section>
+
+<main class="work-section" id="work">
+  <div class="gallery-grid" id="gallery-grid">
+    <!-- populated by JS from _data/galleries.json -->
+  </div>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Nabil Alanbar
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  fetch('_data/galleries.json')
+    .then(r => r.json())
+    .then(data => {
+      const grid = document.getElementById('gallery-grid');
+      data.galleries.forEach(g => {
+        const a = document.createElement('a');
+        a.className = 'gallery-card';
+        a.href = 'gallery.html?id=' + g.id;
+
+        const imgEl = g.cover
+          ? `<img src="${g.cover}" alt="${g.title}" loading="lazy">`
+          : `<div class="placeholder-img">No cover</div>`;
+
+        a.innerHTML = `
+          ${imgEl}
+          <div class="gallery-card-info">
+            <span class="gallery-card-title">${g.title}</span>
+            <span class="gallery-card-year">${g.year}</span>
+          </div>
+        `;
+        grid.appendChild(a);
+      });
+    });
+</script>
+</body>
+</html>

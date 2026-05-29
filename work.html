@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Nabil Alanbar</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .work-page-header {
+      padding: calc(var(--nav-h) + 4rem) 2.5rem 3rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .work-page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Driven by Coffee</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="work-page-header">
+  <h1>Work</h1>
+</div>
+
+<main class="work-section">
+  <div class="gallery-grid" id="gallery-grid"></div>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Nabil Alanbar
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  fetch('_data/galleries.json')
+    .then(r => r.json())
+    .then(data => {
+      const grid = document.getElementById('gallery-grid');
+      data.galleries.forEach(g => {
+        const a = document.createElement('a');
+        a.className = 'gallery-card';
+        a.href = 'gallery.html?id=' + g.id;
+        const imgEl = g.cover
+          ? `<img src="${g.cover}" alt="${g.title}" loading="lazy">`
+          : `<div class="placeholder-img">No cover</div>`;
+        a.innerHTML = `
+          ${imgEl}
+          <div class="gallery-card-info">
+            <span class="gallery-card-title">${g.title}</span>
+            <span class="gallery-card-year">${g.year}</span>
+          </div>`;
+        grid.appendChild(a);
+      });
+    });
+</script>
+</body>
+</html>

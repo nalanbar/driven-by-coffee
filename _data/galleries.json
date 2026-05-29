@@ -1,0 +1,105 @@
+{
+  "site": {
+    "title": "Nabil Alanbar",
+    "tagline": "Driven by Coffee",
+    "contact_email": "your@email.com"
+  },
+  "galleries": [
+    {
+      "id": "q-s1-examples",
+      "title": "Q-S1 Examples",
+      "year": 2026,
+      "cover": "galleries/q-s1-examples/cover.jpg",
+      "description": "Shots from the Pentax Q-S1.",
+      "photos": [
+        { "file": "galleries/q-s1-examples/bubbling.jpg", "caption": "Bubbling" },
+        { "file": "galleries/q-s1-examples/lake-of-fire.jpg", "caption": "Lake of Fire in a Millimeter of Suds" },
+        { "file": "galleries/q-s1-examples/hottest-music.jpg", "caption": "The Hotest Music" },
+        { "file": "galleries/q-s1-examples/texture-i.jpg", "caption": "Texture I" },
+        { "file": "galleries/q-s1-examples/english.jpg", "caption": "I wonder what this says in English" },
+        { "file": "galleries/q-s1-examples/dark-light.jpg", "caption": "Dark Light" },
+        { "file": "galleries/q-s1-examples/but-am-i.jpg", "caption": "But am I?" }
+      ]
+    },
+    {
+      "id": "purple-montreal",
+      "title": "Purple Montreal",
+      "year": 2026,
+      "cover": "galleries/purple-montreal/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "grand-rapids-drive",
+      "title": "Grand Rapids Drive",
+      "year": 2026,
+      "cover": "galleries/grand-rapids-drive/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "for-the-print-swap",
+      "title": "For the Print Swap",
+      "year": 2026,
+      "cover": "galleries/for-the-print-swap/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "the-water",
+      "title": "The Water",
+      "year": 2025,
+      "cover": "galleries/the-water/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "disarray",
+      "title": "Disarray",
+      "year": 2025,
+      "cover": "galleries/disarray/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "just-sorta-cool",
+      "title": "Just... sorta cool",
+      "year": 2025,
+      "cover": "galleries/just-sorta-cool/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "airplanes",
+      "title": "Airplanes",
+      "year": 2025,
+      "cover": "galleries/airplanes/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "older-shots",
+      "title": "Older Shots",
+      "year": 2025,
+      "cover": "galleries/older-shots/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "a-walk-around-the-neighborhood",
+      "title": "A Walk Around the Neighborhood",
+      "year": 2025,
+      "cover": "galleries/a-walk-around-the-neighborhood/cover.jpg",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "a-walk-downtown",
+      "title": "A Walk Downtown",
+      "year": 2025,
+      "cover": "galleries/a-walk-downtown/cover.jpg",
+      "description": "",
+      "photos": []
+    }
+  ]
+}

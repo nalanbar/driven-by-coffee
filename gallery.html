@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Nabil Alanbar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Driven by Coffee</a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<a href="work.html" class="back-link">&#8592; All work</a>
+
+<header class="gallery-header">
+  <div class="gallery-header-text">
+    <h1 class="gallery-title" id="gallery-title">Loading...</h1>
+    <p class="gallery-meta" id="gallery-year"></p>
+  </div>
+  <p class="gallery-description" id="gallery-description"></p>
+</header>
+
+<main class="photo-masonry" id="photo-masonry"></main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-nav prev" aria-label="Previous photo">&#8592;</button>
+  <img class="lightbox-img" src="" alt="">
+  <button class="lightbox-nav next" aria-label="Next photo">&#8594;</button>
+  <p class="lightbox-caption"></p>
+</div>
+
+<section class="also-like" id="also-like" style="display:none">
+  <h3>You may also like</h3>
+  <div class="also-like-grid" id="also-like-grid"></div>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> Nabil Alanbar
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const params = new URLSearchParams(window.location.search);
+  const galleryId = params.get('id');
+
+  if (!galleryId) {
+    window.location.href = 'work.html';
+  }
+
+  fetch('_data/galleries.json')
+    .then(r => r.json())
+    .then(data => {
+      const gallery = data.galleries.find(g => g.id === galleryId);
+      if (!gallery) { window.location.href = 'work.html'; return; }
+
+      document.title = gallery.title + ' — Nabil Alanbar';
+      document.getElementById('gallery-title').textContent = gallery.title;
+      document.getElementById('gallery-year').textContent = gallery.year;
+      document.getElementById('gallery-description').textContent = gallery.description || '';
+
+      const masonry = document.getElementById('photo-masonry');
+
+      if (!gallery.photos || !gallery.photos.length) {
+        masonry.innerHTML = '<p style="color:var(--fg2);padding:2rem;grid-column:1/-1">No photos yet.</p>';
+      } else {
+        gallery.photos.forEach((photo, i) => {
+          const div = document.createElement('div');
+          div.className = 'photo-item';
+          div.dataset.src = photo.file;
+          div.dataset.caption = photo.caption || '';
+          div.innerHTML = `
+            <img src="${photo.file}" alt="${photo.caption || ''}" loading="${i < 4 ? 'eager' : 'lazy'}">
+            ${photo.caption ? `<p class="photo-caption">${photo.caption}</p>` : ''}
+          `;
+          masonry.appendChild(div);
+        });
+      }
+
+      // "You may also like" - up to 6 other galleries
+      const others = data.galleries.filter(g => g.id !== galleryId).slice(0, 6);
+      if (others.length) {
+        const alsoSection = document.getElementById('also-like');
+        const alsoGrid = document.getElementById('also-like-grid');
+        alsoSection.style.display = '';
+        others.forEach(g => {
+          const a = document.createElement('a');
+          a.className = 'also-card';
+          a.href = 'gallery.html?id=' + g.id;
+          const imgEl = g.cover
+            ? `<img src="${g.cover}" alt="${g.title}" loading="lazy">`
+            : '';
+          a.innerHTML = `
+            <div class="also-card-thumb">${imgEl}</div>
+            <span class="also-card-name">${g.title}</span>
+            <span class="also-card-year">${g.year}</span>
+          `;
+          alsoGrid.appendChild(a);
+        });
+      }
+    });
+</script>
+</body>
+</html>
