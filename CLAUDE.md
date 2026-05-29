@@ -97,7 +97,7 @@ These are direct edits to `_data/galleries.json`.
       "cover": "galleries/gallery-slug/cover.jpg",
       "description": "Optional one-liner shown on the gallery page.",
       "photos": [
-        { "file": "galleries/gallery-slug/photo-1.jpg", "caption": "Optional caption" }
+        { "file": "galleries/gallery-slug/photo-1.jpg", "caption": "Optional caption", "medium": "film" }
       ]
     }
   ]

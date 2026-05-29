@@ -4,5 +4,20 @@
     "tagline": "Driven by Coffee",
     "contact_email": "your@email.com"
   },
-  "galleries": []
+  "galleries": [
+    {
+      "id": "purple-may-2026",
+      "title": "Purple - May 2026",
+      "year": 2026,
+      "cover": "galleries/purple-may-2026/cover.jpg",
+      "description": "Shot through a Pentax Spotmatic on a roll of Lomochrome Purple set to 200 ISO, as a test.",
+      "photos": [
+        { "file": "galleries/purple-may-2026/ferry.jpg", "caption": "", "medium": "film" },
+        { "file": "galleries/purple-may-2026/rowers.jpg", "caption": "", "medium": "film" },
+        { "file": "galleries/purple-may-2026/friend-ship.jpg", "caption": "This ship is a fiberglass recreation of a ship from the late 1800s. It's name is Friendship, and it is beautiful.", "medium": "film" },
+        { "file": "galleries/purple-may-2026/pigeon-portal.jpg", "caption": "This happy accident looks like a pigeon that is about to step into a portal. That portal is an unexpectedly-in-frame mirror.", "medium": "film" },
+        { "file": "galleries/purple-may-2026/reflections.jpg", "caption": "", "medium": "film" }
+      ]
+    }
+  ]
 }
